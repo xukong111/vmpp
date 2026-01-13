@@ -1,14 +1,15 @@
+/**
+ * 沐阳助手强制修复
+ */
 const body = {
   "code": 200,
   "msg": "登录成功",
   "status": 1,
-  "token": "surge_fake_token_888"
+  "token": "surge_fake_888"
 };
 
 $done({
-  status: 200,             // 这一行极其重要，强制覆盖 404
-  headers: {
-    "Content-Type": "application/json; charset=utf-8"
-  },
+  status: 200, // 核心：强制把 404 转为 200
+  headers: { "Content-Type": "application/json" },
   body: JSON.stringify(body)
 });
