@@ -1,9 +1,7 @@
-#!name=沐阳助手修复
-#!desc=拦截并修复沐阳助手服务器 404 问题，强制返回登录成功 JSON。
-
 [Script]
-# 逻辑：拦截 HTTP 请求并直接返回伪造的登录成功数据
-沐阳助手修复 = type=http-request, pattern=^http://uz1mzm22i185\.guyubao\.com/, requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/xukong111/vmpp/main/muy.js
+# 核心：必须使用 http-request，且必须包含 requires-body=1
+沐阳修复 = type=http-request, pattern=^http://uz1mzm22i185\.guyubao\.com/, requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/xukong111/vmpp/main/muy.js
 
 [MITM]
+# 确保 HTTP 请求也被解密（虽然是HTTP，但加上更保险）
 hostname = %APPEND% uz1mzm22i185.guyubao.com
