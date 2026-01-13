@@ -1,7 +1,7 @@
 [Script]
-# 核心：必须使用 http-request，且必须包含 requires-body=1
-沐阳修复 = type=http-request, pattern=^http://uz1mzm22i185\.guyubao\.com/, requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/xukong111/vmpp/main/muy.js
+# 只要包含这个域名，不论后面是什么乱码路径，全部拦截并返回 200
+沐阳助手 = type=http-request, pattern=^http:\/\/uz1mzm22i185\.guyubao\.com\/, requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/xukong111/vmpp/main/muy.js
 
 [MITM]
-# 确保 HTTP 请求也被解密（虽然是HTTP，但加上更保险）
+# 即使是 HTTP，为了确保重写层生效，这里也必须加上
 hostname = %APPEND% uz1mzm22i185.guyubao.com
